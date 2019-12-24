@@ -23,11 +23,12 @@ const schema = makeExecutableSchema({
 const app = express();
 
 // Create graphiQL application
-app.use('/graphiql', graphiqlExpress({ endpointUrl: '/graphql' }));
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 // Connect schemas to graphQL
 app.use(
     '/graphql',
+    bodyParser.json(),
     graphqlExpress({
         schema,
         context: {
